@@ -194,9 +194,11 @@ double NESTcalc::RecombOmegaER(double efield, double elecFrac, double numQuanta,
                  exp(-0.5 * pow(elecFrac - cntr, 2.) / (wide * wide)) *
                  (1. + erf(skew * (elecFrac - cntr) / (wide * sqrt2)));
   else
-    omega = NRERWidthsParam[7] *
-      exp(-0.5 * pow(log10(numQuanta) - cntr, 2.) / (wide * wide)) *
-      (1. + erf(skew * (log10(numQuanta) - cntr) / (wide * sqrt2)));
+    omega = 0.00 +
+      ampl * exp(-0.5 * pow(log10(numQuanta) - cntr, 2.) / (wide * wide) )*
+      (1. + erf(skew * (log10(numQuanta) - cntr) / (wide * sqrt2)))+
+      .072 * exp(-0.5 * pow(log10(numQuanta) - 4.40, 2.) / (0.85 * 0.85) )*
+      (1. + erf(0.00 * (log10(numQuanta) - 4.40) / (0.85 * sqrt2)));
   if (omega < 0.) omega = 0;
   return omega;
 }
@@ -246,13 +248,13 @@ QuantaResult NESTcalc::GetQuanta(const YieldResult &yields, double density,
   } else {
     HighE = false;
   }
-
+  
   double alf = 1. / (1. + excitonRatio);
   double recombProb = 1. - (excitonRatio + 1.) * elecFrac;
   if (recombProb < 0.) {
     excitonRatio = 1. / elecFrac - 1.;
   }
-
+  
   if (ValidityTests::nearlyEqual(yields.Lindhard, 1.)) {
     if (ValidityTests::nearlyEqual(Nq_mean, 0.))
       Nq_actual = 0;

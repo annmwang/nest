@@ -28,7 +28,7 @@ using namespace std;
 using namespace NEST;
 
 vector<double> NRERWidthsParam, NRYieldsParam, ERWeightParam,
-    ERYieldsParam = default_ERYieldsParam;
+  ERYieldsParam = default_ERYieldsParam;
 double band[NUMBINS_MAX][7], energies[3],
     AnnModERange[2] = {1.5, 6.5};  // keVee or nr (recon)
 bool BeenHere = false;
@@ -193,15 +193,15 @@ int main(int argc, char** argv) {
     NRERWidthsParam.push_back(0.19);  // width parameter (Gaussian 1-sigma)
     NRERWidthsParam.push_back(2.25);  // raw skewness, for NR
     NRERWidthsParam.push_back(
-        1.);  // ER Fano normalization for non-density dependence
+       -0.0014);  // ER Fano normalization for non-density dependence
     // negative 0.0015 restores https://arxiv.org/abs/2211.10726v3 Eq. 8
     NRERWidthsParam.push_back(
-        0.046452);  // Minimum amplitude for ER non-binom recomb flucts
-    NRERWidthsParam.push_back(0.205);  // width parameter
-    NRERWidthsParam.push_back(0.45);   // center in e-frac (ER)
-    NRERWidthsParam.push_back(-0.2);   // ER non-binom skewness in e-frac
-    NRERWidthsParam.push_back(0.000);  // add Fi linear change term
-    NRERWidthsParam.push_back(0.000);  // add Fex linear change term
+        0.04311);  // Minimum amplitude for ER non-binom recomb flucts
+    NRERWidthsParam.push_back(0.46); // width parameter
+    NRERWidthsParam.push_back(2.4); // center in e-frac (ER)
+    NRERWidthsParam.push_back(0.0); // ER non-binom skewness in e-frac
+    NRERWidthsParam.push_back(0.000);// add Fi linear change term
+    NRERWidthsParam.push_back(0.000);// add Fex linear change term
 
     // if (type == "ER") {  // Based on XELDA L-shell 5.2 keV yields
     // https://arxiv.org/abs/2109.11487
