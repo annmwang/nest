@@ -4,7 +4,7 @@
 //NOTE - ASK YOURSELF IF YOU SHOULD BE WORKING ON ANALYSIS_G2 INSTEAD!
 
 // Verbosity flag (for limiting output to yields; no timing)
-int verbosity = 1;  // use -1 for off, but 0 for efficiency
+int verbosity = -1;  // use -1 for off, but 0 for efficiency
 // Loop for execNEST and rootNEST to find the best-fit model parameters
 unsigned loopNEST = 0;
 // 0 for no or off, 1 for ER, 2 for NR
@@ -13,8 +13,8 @@ bool PrintSubThr = true; //BEWARE that false makes #evts < your req
 // include or exclude the infamous negative S1 & S2 pulses (and 0's)
 
 // General parameters of importance changing the global behavior
-bool MCtruthE = false;    // false means reconstructed energy
-bool MCtruthPos = false;  // false means reconstructed position
+bool MCtruthE = true; //false;    // false means reconstructed energy
+bool MCtruthPos = true; //false;  // false means reconstructed position
 
 // Setting the S1 and S2 calculation modes
 NEST::S1CalculationMode s1CalculationMode = NEST::S1CalculationMode::Hybrid;
@@ -32,9 +32,9 @@ NEST::S2CalculationMode s2CalculationMode = NEST::S2CalculationMode::Full;
 // WaveformWithEtrain: calculate the pulse area and the waveform with etrain
 
 // 0 means PE, 1 means phd (PE/~1.2), 2 means spike count
-int usePD = 2;
+int usePD = 1; 
 // band style: log(S2) with 1, while 0 means log(S2/S1)
-int useS2 = 0;  // xtra feature: 2 means S2 x-axis energy scale
+int useS2 = 1;  // xtra feature: 2 means S2 x-axis energy scale
 
 double minS1 = 1.5;  // units are controlled by the usePD flag
 // this is separate from S1 thresholds controlled by detector
@@ -44,13 +44,13 @@ int numBins = 98;  // for LUXRun03 DD, change these to 1.7,110.6,99
 // for efficiency calculation
 // minS2 need not match S2 threshold in detector.hh
 // you can treat as trigger vs. analysis thresholds
-double minS2 = 42.;
-double maxS2 = 1e4;  // 5e3 for DD. At least 2e5 for post-Run04 14C
+double minS2 = 0.;
+double maxS2 = 1e7;  // 5e3 for DD. At least 2e5 for post-Run04 14C
 
 // log(S2/S1) or log(S2) admitted into analysis incl. limit
-double logMax = 3.6;  // when skewness=1 or 2 ROOT ignores these and does raw
+double logMax = 7;  // when skewness=1 or 2 ROOT ignores these and does raw
                       // mean +/- 3-sigma
-double logMin = 0.6;
+double logMin = 0;
 int logBins = 30;  //#bins in between logMin & logMax for fits
 
 // some numbers for fine-tuning the speed vs. the accuracy

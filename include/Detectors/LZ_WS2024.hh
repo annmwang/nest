@@ -95,7 +95,7 @@ class LZ_Detector_2024 : public VDetector {
     // Ionization and Secondary Scintillation (S2) parameters
     g1_gas = 0.076404;// +/- 0.002 // phd per S2 photon in gas, used to get SE size
     s2Fano = 4.0;  // Fano-like fudge factor for SE width
-    s2_thr = 783.;  // the S2 threshold in phe or PE, *not* phd. Affects NR most
+    s2_thr = 20;//783.;  // the S2 threshold in phe or PE, *not* phd. Affects NR most
     E_gas = 8.301178;    // effective field in kV/cm between liquid/gas border and anode
 			 // gives extraction efficiency of ~75%
     eLife_us = 9000.; //the drift electron mean lifetime in micro-seconds

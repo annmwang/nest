@@ -41,13 +41,13 @@ int numBins = 118;  // for LUXRun03 DD, change these to 1.7,110.6,99
 // for efficiency calculation
 // minS2 need not match S2 threshold in detector.hh
 // you can treat as trigger vs. analysis thresholds
-double minS2 = 2e2;
+double minS2 = 0;
 double maxS2 = 9e4;  // 5e3 for DD. At least 2e5 for post-Run04 14C
 
 // log(S2/S1) or log(S2) admitted into analysis incl. limit
 double logMax = 5.0;  // when skewness=1 or 2 ROOT ignores these and does raw
                       // mean +/- 3-sigma
-double logMin = 2.0;
+double logMin = 0.;
 int logBins = 50;  //#bins in between logMin & logMax for fits
 
 // some numbers for fine-tuning the speed vs. the accuracy
